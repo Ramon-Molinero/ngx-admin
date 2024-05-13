@@ -19,7 +19,7 @@ export const routes: Routes = [
   },
   {
     path: 'themes',
-    loadChildren: () => import('app/themes-screen/starter.module')
+    loadChildren: () => import('../app/themes-screen/starter.module')
       .then(m => m.StarterModule),
   },
   {

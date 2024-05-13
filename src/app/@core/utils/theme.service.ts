@@ -21,7 +21,9 @@ export class CurrentThemeService implements OnDestroy {
   }
 
   getCurrentTheme(): string {
-    return localStorage.theme ? JSON.parse(localStorage.theme).themeName : 'default';
+    const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const deviceTheme = userPrefersDark ? 'material-dark' : 'material-light';
+    return localStorage.theme ? JSON.parse(localStorage.theme).themeName : deviceTheme;
   }
 
   calculateExpiration(iat: number): number {
